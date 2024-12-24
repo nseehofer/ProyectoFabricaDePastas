@@ -13,31 +13,17 @@ public class FabricaDePastas {
 	private Pasta[] pedido;
 
 	public FabricaDePastas(String nombrePedido) {
-		// TODO: Completar el constructor para que el producto funcione correctamente.
 		this.nombrePedido = nombrePedido;
 		this.pastas = new Pasta[TipoDePasta.values().length];
 		this.pedido = new Pasta[CANTIDAD_MAXIMA_DE_PASTAS_EN_UN_PEDIDO];
 		this.inicializarFabricaDePastas();
 	}
 
-	// TODO: Completar los getters y setters que considere necesarios.
-
 	public boolean agregarPastaAlPedido(String codigoPasta, int cantidad) {
-		// TODO: Se debe buscar la pasta por su codigo
-		// y AGREGARLA AL PEDIDO!
-		// solo si hay cantidad suficiente de la pasta solicitada. Luego de agregarla,
-		// se debe
-		// actualizar la cantidad de la pasta agregada en el array de pastas (considerar
-		// el
-		// metodo descontarCantidadDePastaDisponible()). Devuelve verdadero en caso de
-		// completar la
-		// operacion o falso en caso de no poder realizar la operacion por el motivo que
-		// sea.
 
 		Pasta pasta = obtenerPastaPorCodigo(codigoPasta);
 		int indice = 0;
 		boolean seAgrego = false;
-		// ACA COMPRENDIMOS LO QUE HIZO CECI.
 		Pasta pedido = new Pasta(codigoPasta, pasta.getTipoDePasta(), pasta.isEsRellena(), pasta.getPrecio(), cantidad);
 
 		if (pasta != null && pasta.getCantidad() >= cantidad) {
@@ -57,9 +43,6 @@ public class FabricaDePastas {
 	}
 
 	private Pasta obtenerPastaPorCodigo(String codigoPasta) {
-		// TODO: Se debe buscar en el array de pastas y devolver la pasta que coincida
-		// con el codigoPasta
-		// suministrado, o null en caso de que no exista una pasta con ese codigoPasta.
 		boolean seEncontro = false;
 		int indice = 0;
 		Pasta pastaEncontrada = null;
@@ -78,7 +61,6 @@ public class FabricaDePastas {
 
 	private void descontarCantidadDePastaDisponible(String codigoPasta, int cantidadADescontar) {
 
-		// TODO: Actualiza la cantidad de pasta en el array de pastas.
 		boolean seEncontro = false;
 		int indice = 0, cantidadActualizada = 0;
 		while (indice < this.pastas.length && !seEncontro) {
@@ -94,10 +76,7 @@ public class FabricaDePastas {
 	}
 
 	public double obtenerTotalDelPedido() {
-		// TODO: Calcula y devuelve el total del pedido considerando el precio de la
-		// pasta y la cantidad solicitada en el pedido.
-		// ME GENERA DUDA LO DE LA CANTIDAD SOLICITADA EN PEDIDO, ESO NO SE COMO TENERLO
-		// EN CUENTA DENTRO DEL METODO
+
 		double montoTotalDelPedido = 0;
 		for (int indice = 0; indice < this.pedido.length; indice++) {
 			if (this.pedido[indice] != null) {
@@ -109,8 +88,6 @@ public class FabricaDePastas {
 	}
 
 	public Pasta obtenerPastaDeUnTipoDePastaConMenorCantidadEnElPedido(TipoDePasta tipoDePasta) {
-		// TODO: Devuelve la pasta que aplique al tipoDePasta indicado, que posea menor
-		// cantidad en el pedido.
 
 		Pasta pastaDelTipoConMenorCantidad = null;
 
@@ -128,9 +105,6 @@ public class FabricaDePastas {
 	}
 
 	public Pasta[] obtenerPedidoPorPrecioDePastaDescendente() {
-		// TODO: Debe ordenar y devolver las pastas en el pedido de manera descendente,
-		// debiendo quedar en la primera posicion la pasta de mayor precio.
-		// ME GENERA DUDAS LOS DOS ARRAY DE PASTAS, UNO DE PASTAS Y OTRO DE PEDIDO.
 
 		Pasta auxiliar = null;
 
@@ -157,7 +131,6 @@ public class FabricaDePastas {
 	private void inicializarFabricaDePastas() {
 		int codigo = 100;
 		for (int i = 0; i < TipoDePasta.values().length; i++) {
-			// Porque no me asigna valores al precio y al esRellenaa?
 			this.pastas[i] = this.agregarPasta("" + codigo, TipoDePasta.values()[i], 0 != i, ((i * 7) + 115.5),
 					(i * 7 + 15));
 

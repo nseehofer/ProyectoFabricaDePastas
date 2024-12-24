@@ -11,9 +11,6 @@ public class Pasta {
 	private double precio;
 	private int cantidad;
 
-	// TODO: Completar constructor/es, getters, setters y otros metodos que
-	// considere necesarios.
-
 	public Pasta(String codigo, TipoDePasta tipoDePasta, boolean esRellena, double precio, int cantidadEnStock) {
 		this.codigo = codigo;
 		this.cantidad = cantidadEnStock;
